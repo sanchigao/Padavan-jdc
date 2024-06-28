@@ -1,36 +1,36 @@
 #修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name: Build Padavan
+ 姓名 :名称:建立帕达万
 
 on: 
   release:
-    types: [published]
+    types: [    类型:[公布]]
   push:
     tags:
     - 'v*'
-  #  branches: 
-  #    - master
+  #  branches:#  branches: 
+  #    - master#    - master
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:
-    types: [started]
+    types: [    类型:[开始]]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on:     启动:U本图-20.04
+    if:     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: Initialization environment
+    - name:     名称:结账
+      uses:       用途:操作/结账@主人
+    - name:     名称:初始化环境
       env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
-        cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
-        pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
-    - name: Clone source code
+        DEBIAN_FRONTEND:         去正面:非交互式
+      跑 : |
+        最新情况
+        安装解压缩工具曲卷
+        CpioGit俾森文档自动自动自动输入文本信息建立-必要的帮助人员留言
+        Pkg-康菲奇Z9011G-Dev图书馆
+    - 姓名 :名称:克隆源代码
       env:
         KERNEL: 4.4
       run: |
@@ -42,11 +42,11 @@ jobs:
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
-    - name: Build Firmware
+    - name:     -名称:建立固件
       env:
-        TNAME: JDCLOUD-RE-SP-01B
-        KERNEL: 4.4
-      run: |
+        TNAME:         名称:JD云-重新设计
+        核 : 4.4
+      跑 : |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
